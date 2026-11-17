@@ -63,3 +63,7 @@ PRODUCT_COPY_FILES += \
 # SUPL profiles consumed by the MediaTek A-GPS stack.
 PRODUCT_COPY_FILES += \
     device/xiaomi/nikel/gps/agps_profiles_conf2.xml:system/etc/agps_profiles_conf2.xml
+
+# Stock MediaTek thermal policy.
+PRODUCT_COPY_FILES += \
+    device/xiaomi/nikel/configs/thermal.conf:system/etc/.tp/thermal.conf
