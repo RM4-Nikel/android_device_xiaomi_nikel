@@ -1,96 +1,100 @@
 # Xiaomi Redmi Note 4 — Nikel
 
-Дерево устройства для LineageOS 13.0 на Android 6.0.1, платформа MediaTek MT6797.
-Продукт сборки — `lineage_nikel`, архитектуры — ARM64 и ARM32.
-Дерево развивается поэтапно, с отдельными коммитами для подсистем.
+English | [Русский](README.ru.md)
 
-Проверены выбор продукта через `lunch`, сборка контрольного `boot.img`, приложения
-FMRadio, библиотек телефонии и нативных зависимостей. Проверки загрузки, камеры,
-звука, связи, FM, отпечатка и шифрования на телефоне ещё предстоят.
+Device tree for LineageOS 13.0 based on Android 6.0.1, targeting MediaTek MT6797.
+The build product is `lineage_nikel`, with ARM64 and ARM32 support.
+Development proceeds incrementally, with separate commits for each subsystem.
 
-Пользовательская часть отпечатка включает FPC и Goodix. Готовое ядро в этом дереве
-собрано с поддержкой Goodix. Для FPC потребуется соответствующая конфигурация ядра.
-В вариантах `userdebug` и `eng` домены `mtk_daemon` и `fingerprintd` работают
-в permissive для сбора отказов SELinux при первоначальном запуске.
+Validation covers product selection through `lunch`, a control `boot.img` build,
+FMRadio, telephony libraries and native dependencies. On-device testing of boot,
+camera, audio, connectivity, FM, fingerprint and encryption is still pending.
 
-## Структура
+Fingerprint userspace includes FPC and Goodix support. The bundled prebuilt kernel
+is configured for Goodix. FPC requires a corresponding kernel configuration.
+In `userdebug` and `eng` builds, the `mtk_daemon` and `fingerprintd` domains run
+in permissive mode to collect SELinux denials during initial bring-up.
 
-| Файл или каталог | Назначение |
+## Layout
+
+| File or directory | Purpose |
 |---|---|
-| `BoardConfig.mk` | MT6797, ABI, параметры загрузочного образа и разделов |
-| `lineage.mk`, `full_nikel.mk`, `device.mk` | Продукт, пакеты и установка файлов |
-| `rootdir/` | Init-сервисы, fstab и права устройств |
-| `configs/`, `audio/`, `gps/`, `wifi/` | Конфигурации подсистем |
-| `overlay/` | Настройки ресурсов Android для Nikel |
-| `sepolicy/` | Дополнения политики SELinux |
-| `ril-cm13/` | Адаптер MediaTek RIL для API телефонии CM13 |
-| `prebuilt/kernel` | Ядро в формате `Image.gz-dtb` |
-| `proprietary-blobs.txt` | Список блобов, сгруппированный по подсистемам |
-| `patches/` | Изменения платформы, необходимые этому дереву |
-| `tools/` | Проверка vendor-файлов и загрузочного образа |
+| `BoardConfig.mk` | MT6797, ABIs, boot image geometry and partitions |
+| `lineage.mk`, `full_nikel.mk`, `device.mk` | Product definition, packages and file installation |
+| `rootdir/` | Init services, fstab and device permissions |
+| `configs/`, `audio/`, `gps/`, `wifi/` | Subsystem configurations |
+| `overlay/` | Nikel-specific Android resource settings |
+| `sepolicy/` | Device SELinux policy additions |
+| `ril-cm13/` | MediaTek RIL adapter for the CM13 telephony API |
+| `prebuilt/kernel` | Kernel in `Image.gz-dtb` format |
+| `proprietary-blobs.txt` | Blob list grouped by subsystem |
+| `patches/` | Platform changes required by this tree |
+| `tools/` | Vendor file and boot image verification |
 
-## Исходники и окружение
+## Sources and environment
 
-Дерево размещается в `device/xiaomi/nikel`, vendor — в `vendor/xiaomi/nikel`.
-Для платформы используется ветка `cm-13.0`. Все команды ниже выполняются из корня
-исходников LineageOS.
+Place this tree at `device/xiaomi/nikel` and the vendor tree at
+`vendor/xiaomi/nikel`. Use the `cm-13.0` platform branch. Run the commands below
+from the LineageOS source root.
 
-Для сборки используются JDK 8 и инструменты эпохи Android 6. Старым скриптам
-Java-сборки нужен Python 2.7 под именем `python`. Скрипты из `tools/` запускаются
-через Python 3 и используют `readelf`.
+The build uses JDK 8 and Android 6-era tools. Legacy Java build scripts require
+Python 2.7 under the command name `python`. Scripts in `tools/` run with Python 3
+and use `readelf`.
 
-При проверке на современном Linux для legacy Jack понадобилась обёртка `curl`,
-заменяющая аргумент `--no-proxy` на `--noproxy`. В текущем локальном окружении
-обёртка и ссылка `python` на Python 2 находятся в
-`/home/ma3axata/nikel-validation/python2-bin`. Этот каталог можно добавить в начало
-`PATH` перед запуском Java-сборки.
+Validation on modern Linux required a `curl` wrapper for legacy Jack that replaces
+`--no-proxy` with `--noproxy`. In the current local environment, the wrapper and
+the `python` link to Python 2 are in
+`/home/ma3axata/nikel-validation/python2-bin`. Add this directory to the beginning
+of `PATH` before running Java builds on this machine.
 
-Готовое ядро собрано из коммита `70e2df0c7b9efa37b920a291ad6e32ac92d4ca98`
-с `nikel_defconfig` и GCC 4.9 из ALPS. Источник блобов — распакованный сток Nikel
-MIUI `V10.2.1.0.MBFMIXM`, Android 6.0.
+The prebuilt kernel was built from commit
+`70e2df0c7b9efa37b920a291ad6e32ac92d4ca98`, using `nikel_defconfig` and GCC 4.9
+from ALPS. Blobs come from an unpacked Nikel MIUI `V10.2.1.0.MBFMIXM` stock dump
+based on Android 6.0.
 
-Исходники ядра доступны в репозитории проекта.
+Kernel sources are available in the project repository.
 [RM4-Nikel/android_kernel_xiaomi_nikel](https://github.com/RM4-Nikel/android_kernel_xiaomi_nikel)
 
-## Патчи платформы
+## Platform patches
 
-Для чистого дерева CM13 нужны следующие патчи. В текущем рабочем дереве они уже
-применены. Перед применением к другой ревизии проверь каждый через `git apply --check`.
+A clean CM13 tree requires the following patches. They are already applied in
+the current workspace. Check each patch with `git apply --check` before applying
+it to another revision.
 
-| Патч | Репозиторий | Назначение |
+| Patch | Repository | Purpose |
 |---|---|---|
-| `system-core-mtk-init.patch` | `system/core` | Окружение MTK RIL и отключение запуска стандартного rild |
-| `system-core-mtk-ril.patch` | `system/core` | Сетевые ioctl CCMNI для MediaTek RIL |
-| `frameworks-av-camera-flip.patch` | `frameworks/av` | Символы `CameraParameters`, используемые стоковой камерой |
-| `tinycompress-prebuilt-kernel.patch` | `external/tinycompress` | Использование UAPI-заголовков Bionic при готовом ядре Nikel |
+| `system-core-mtk-init.patch` | `system/core` | MTK RIL environment and disabling automatic startup of the standard rild |
+| `system-core-mtk-ril.patch` | `system/core` | CCMNI network ioctls for MediaTek RIL |
+| `frameworks-av-camera-flip.patch` | `frameworks/av` | `CameraParameters` symbols used by the stock camera |
+| `tinycompress-prebuilt-kernel.patch` | `external/tinycompress` | Bionic UAPI headers when using the Nikel prebuilt kernel |
 
-Например, из корня CM13 можно проверить и применить патч камеры.
+For example, check and apply the camera patch from the CM13 root.
 
 ```bash
 git -C frameworks/av apply --check ../../device/xiaomi/nikel/patches/frameworks-av-camera-flip.patch
 git -C frameworks/av apply ../../device/xiaomi/nikel/patches/frameworks-av-camera-flip.patch
 ```
 
-## Работа с vendor
+## Working with vendor files
 
-`proprietary-blobs.txt` содержит пути относительно `system/` стокового дампа.
-Запись `source:destination` задаёт другое имя при установке. Общие зависимости
-сгруппированы по основной роли. Назначение отдельных UUID-файлов Trustonic
-пока требует уточнения.
+Paths in `proprietary-blobs.txt` are relative to `system/` in the stock dump.
+The `source:destination` syntax specifies a different installation path.
+Shared dependencies are grouped by their primary role. The purposes of individual
+UUID-named Trustonic files still need verification.
 
-Для извлечения файлов укажи каталог дампа, содержащий `system/`.
+To extract files, specify the dump directory containing `system/`.
 
 ```bash
 device/xiaomi/nikel/extract-files.sh /path/to/stock-dump
 python3 device/xiaomi/nikel/tools/audit-vendor.py /path/to/stock-dump
 ```
 
-Извлечение заменяет перечисленные файлы их стоковыми версиями. Аудит сравнивает
-хеши со стоком и проверяет пути vendor-зависимостей ELF с учётом ABI.
-Совместимость символов платформы и работу оборудования проверяют отдельно.
+Extraction replaces listed files with their stock versions. The audit compares
+hashes against stock and checks vendor ELF dependency paths for the matching ABI.
+Platform symbol compatibility and hardware behavior require separate validation.
 
-Для ручного добавления блоба дополни список, положи файл в соответствующий путь
-под `vendor/xiaomi/nikel/proprietary/` и пересоздай makefile.
+To add a blob manually, update the list, place the file at the corresponding path
+under `vendor/xiaomi/nikel/proprietary/`, and regenerate the makefiles.
 
 ```bash
 device/xiaomi/nikel/setup-makefiles.sh
@@ -99,11 +103,11 @@ git -C vendor/xiaomi/nikel diff
 git -C vendor/xiaomi/nikel status --short
 ```
 
-`setup-makefiles.sh` сохраняет содержимое блобов. Намеренно изменённая библиотека
-даст отличие хеша при сравнении со стоком. Изменения списка и vendor-файлов
-фиксируются в соответствующих Git-репозиториях.
+`setup-makefiles.sh` preserves blob contents. Intentionally modified libraries
+will produce hash differences when compared with stock. Commit changes to the
+list and vendor files in their respective Git repositories.
 
-## Контрольная сборка
+## Control build
 
 ```bash
 export LC_ALL=C
@@ -113,28 +117,28 @@ make -j4 bootimage
 python3 device/xiaomi/nikel/tools/verify-boot.py out/target/product/nikel/boot.img
 ```
 
-Проверка образа сверяет заголовок Android, контрольную сумму, ядро, добавленный
-DTB и необходимые файлы initramfs. Результат сборки находится в
+Image verification checks the Android header, checksum, kernel, appended DTB and
+required initramfs files. The build output is
 `out/target/product/nikel/boot.img`.
 
-FMRadio собирается отдельной целью после подготовки окружения Java-сборки.
+Build FMRadio separately after preparing the Java build environment.
 
 ```bash
 make -j4 FMRadio
 ```
 
-Для сравнения с другим ядром можно задать `TARGET_PREBUILT_KERNEL` при сборке.
-Ядро должно иметь формат gzip с добавленным DTB. Скрипт `verify-boot.py` сверяет
-образ с `prebuilt/kernel` из этого дерева.
+To compare another kernel, set `TARGET_PREBUILT_KERNEL` when building.
+The kernel must use gzip format with an appended DTB. The `verify-boot.py` script
+compares the image with this tree's `prebuilt/kernel`.
 
 ```bash
 make -j4 bootimage TARGET_PREBUILT_KERNEL=/path/to/Image.gz-dtb
 ```
 
-Размер раздела boot в стоковом scatter — 16 МиБ. Работу раздела `/data`,
-существующего шифрования, загрузчика и аппаратных вариантов предстоит проверить
-на устройстве. Полная сборка прошивки остаётся следующим этапом.
+The stock scatter file specifies a 16 MiB boot partition. The `/data` partition,
+existing encryption, bootloader behavior and hardware variants still require
+on-device testing. A full ROM build remains a subsequent development step.
 
-Адаптер RIL и его исходный патч CCMNI взяты из дерева CoreXGT для CM13
-с сохранением авторских заголовков. FMRadio используется из исходников CM13.
+The RIL adapter and its original CCMNI patch come from CoreXGT's CM13 device tree,
+with the original author headers preserved. FMRadio comes from the CM13 sources.
 [CoreXGT Nikel cm-13.0](https://github.com/CoreXGT/android_device_xiaomi-nikel-lineage-14.1/tree/cm-13.0)
