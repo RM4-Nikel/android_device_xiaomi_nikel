@@ -1,1 +1,4 @@
 /dev/mali    u:object_r:gpu_device:s0
+/system/bin/(wmt_loader|thermal_manager|thermal|thermald|thermalloadalgod|mtk_agpsd|ccci_mdinit|ccci_fsd|nvram_daemon) u:object_r:mtk_daemon_exec:s0
+/system/xbin/mnld u:object_r:mtk_daemon_exec:s0
+/system/bin/mtkrild u:object_r:rild_exec:s0

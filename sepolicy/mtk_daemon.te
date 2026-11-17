@@ -1,0 +1,7 @@
+# Initial stock daemon domain. Refine accesses using device AVC logs.
+type mtk_daemon, domain;
+type mtk_daemon_exec, exec_type, file_type;
+init_daemon_domain(mtk_daemon)
+userdebug_or_eng(
+    permissive mtk_daemon;
+)

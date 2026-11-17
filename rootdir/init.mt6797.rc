@@ -1,6 +1,12 @@
 import /init.mt6797.services.rc
 import /init.mt6797.modem.rc
 
+on init
+    mkdir /nvdata 0771 root system
+    mkdir /nvcfg 0771 root system
+    mkdir /protect_f 0771 root system
+    mkdir /protect_s 0771 root system
+
 on fs
     mount_all /fstab.mt6797
     mkdir /dev/usb-ffs 0770 shell shell
@@ -9,6 +15,7 @@ on fs
     write /sys/class/android_usb/android0/f_ffs/aliases adb
 
 on post-fs-data
+    symlink /nvdata /data/nvram
     mkdir /data/agps_supl 0771 gps system
     mkdir /data/misc/gps 0770 gps system
 
