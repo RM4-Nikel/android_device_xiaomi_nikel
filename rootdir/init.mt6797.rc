@@ -1,4 +1,5 @@
 import /init.mt6797.services.rc
+import /init.mt6797.modem.rc
 
 on fs
     mount_all /fstab.mt6797

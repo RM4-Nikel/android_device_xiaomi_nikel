@@ -1,1 +1,2 @@
 configs/thermal.conf -diff
+*.patch -whitespace

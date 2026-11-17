@@ -1,0 +1,25 @@
+diff --git a/init/init.cpp b/init/init.cpp
+index 8ea42ca74..e1d0063b8 100644
+--- a/init/init.cpp
++++ b/init/init.cpp
+@@ -85,7 +85,7 @@ static int have_console;
+ static char console_name[PROP_VALUE_MAX] = "/dev/console";
+ static time_t process_needs_restart;
+ 
+-static const char *ENV[32];
++static const char *ENV[64];
+ 
+ bool waiting_for_exec = false;
+ 
+diff --git a/rootdir/init.rc b/rootdir/init.rc
+index cfcab625a..8d7873509 100644
+--- a/rootdir/init.rc
++++ b/rootdir/init.rc
+@@ -658,6 +658,7 @@ service debuggerd64 /system/bin/debuggerd64
+ 
+ service ril-daemon /system/bin/rild
+     class main
++    disabled
+     socket rild stream 660 root radio
+     socket sap_uim_socket1 stream 660 bluetooth bluetooth
+     socket rild-debug stream 660 radio system
