@@ -2,6 +2,13 @@ $(call inherit-product-if-exists, vendor/xiaomi/nikel/nikel-vendor.mk)
 
 ifneq ($(wildcard vendor/xiaomi/nikel/nikel-vendor.mk),)
 PRODUCT_PACKAGES += libcurl libtinyxml
+PRODUCT_PACKAGES += libtinycompress librilutils
+PRODUCT_PACKAGES += \
+    libandroid \
+    libinput \
+    libjpeg \
+    libpowermanager \
+    libsqlite
 PRODUCT_PACKAGES += \
     libgatekeeper \
     libjnigraphics \

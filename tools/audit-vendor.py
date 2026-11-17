@@ -17,9 +17,10 @@ libc libc++ libdl libm liblog libutils libcutils libhardware libbinder
 libGLESv1_CM libGLESv2 libEGL libui libgui libion libsync libz libbase
 libstdc++ libmedia libstagefright libstagefright_foundation libcrypto libssl
 libicuuc libnativehelper libnetutils libnetd_client libhardware_legacy
-libtinyalsa libtinyxml libcurl libaudioutils libexpat libxml2 libbacktrace
+libtinyalsa libtinycompress librilutils libtinyxml libcurl libaudioutils libexpat libxml2 libbacktrace
 libunwind libpower libcamera_client libcamera_metadata libdrmframework
 libskia libselinux libpng libjnigraphics libkeystore_binder
+libETC1 libLLVM libRS libRScpp libandroid libandroid_runtime libandroidfw libbcc libbcinfo libft2 libharfbuzz_ng libhwui libicui18n libimg_utils libinput libinputflinger libjpeg libmemtrack libminikin libnativebridge libpdfium libpowermanager libprocessgroup libradio libradio_metadata libsonivox libsoundtrigger libsqlite libusbhost
 libsoftkeymasterdevice libsoftkeymaster libkeymaster_messages libkeymaster1 libgatekeeper
 """.split())
 count = 0

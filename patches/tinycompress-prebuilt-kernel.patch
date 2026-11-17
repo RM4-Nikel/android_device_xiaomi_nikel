@@ -1,0 +1,15 @@
+diff --git a/Android.mk b/Android.mk
+index 35d4447..0301556 100644
+--- a/Android.mk
++++ b/Android.mk
+@@ -2,8 +2,10 @@ LOCAL_PATH:= $(call my-dir)
+ 
+ include $(CLEAR_VARS)
+ LOCAL_C_INCLUDES:= $(LOCAL_PATH)/include
++ifneq ($(TARGET_DEVICE),nikel)
+ LOCAL_C_INCLUDES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include
+ LOCAL_ADDITIONAL_DEPENDENCIES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr
++endif
+ LOCAL_SRC_FILES:= compress.c utils.c
+ LOCAL_MODULE := libtinycompress
+ LOCAL_SHARED_LIBRARIES:= libcutils libutils
