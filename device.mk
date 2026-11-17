@@ -39,3 +39,16 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/xiaomi/nikel/audio/audio_policy.conf:system/etc/audio_policy.conf \
     device/xiaomi/nikel/audio/audio_device.xml:system/etc/audio_device.xml
+
+# Stagefright codec lists and the MediaTek OMX registry.
+NIKEL_MEDIA_CONFIGS := \
+    media_codecs.xml \
+    media_codecs_performance.xml \
+    media_codecs_mediatek_audio.xml \
+    media_codecs_mediatek_video.xml \
+    media_codecs_google_audio.xml \
+    media_codecs_google_video_le.xml \
+    mtk_omx_core.cfg
+
+PRODUCT_COPY_FILES += $(foreach file,$(NIKEL_MEDIA_CONFIGS),\
+    device/xiaomi/nikel/configs/$(file):system/etc/$(file))
