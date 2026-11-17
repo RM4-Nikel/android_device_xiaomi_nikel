@@ -22,6 +22,7 @@ BOARD_KERNEL_PAGESIZE := 2048
 BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 \
     --ramdisk_offset 0x04f88000 \
     --tags_offset 0x03f88000
+TARGET_PREBUILT_KERNEL ?= device/xiaomi/nikel/prebuilt/kernel
 
 # Partition sizes from MT6797_Android_scatter.txt.
 BOARD_BOOTIMAGE_PARTITION_SIZE := 16777216
