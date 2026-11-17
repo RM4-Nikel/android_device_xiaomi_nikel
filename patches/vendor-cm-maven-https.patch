@@ -1,0 +1,29 @@
+diff --git a/build/core/maven_artifact.mk b/build/core/maven_artifact.mk
+index b74a1927..edf1bb68 100644
+--- a/build/core/maven_artifact.mk
++++ b/build/core/maven_artifact.mk
+@@ -39,7 +39,7 @@ $(LOCAL_PREBUILT_MODULE_FILE): version := $(LOCAL_MAVEN_VERSION)
+ $(LOCAL_PREBUILT_MODULE_FILE): packaging := $(LOCAL_MAVEN_PACKAGING)
+ $(LOCAL_PREBUILT_MODULE_FILE): classifier := $(LOCAL_MAVEN_CLASSIFIER)
+ $(LOCAL_PREBUILT_MODULE_FILE):
+-	$(hide) $(TOP)/prebuilts/eclipse/maven/apache-maven-3.2.1/bin/mvn -q org.apache.maven.plugins:maven-dependency-plugin:2.10:get \
++	$(hide) $(TOP)/prebuilts/eclipse/maven/apache-maven-3.2.1/bin/mvn -s $(TOP)/vendor/cm/build/core/maven_settings.xml -q org.apache.maven.plugins:maven-dependency-plugin:2.10:get \
+ 				   org.apache.maven.plugins:maven-dependency-plugin:2.10:copy \
+ 		-DremoteRepositories=central::::$(repo) \
+ 		-Dartifact=$(group):$(artifact):$(version):$(packaging)$(if $(classifier),:$(classifier)) \
+diff --git a/build/core/maven_settings.xml b/build/core/maven_settings.xml
+new file mode 100644
+index 00000000..959c2534
+--- /dev/null
++++ b/build/core/maven_settings.xml
+@@ -0,0 +1,10 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0">
++  <mirrors>
++    <mirror>
++      <id>central-https</id>
++      <mirrorOf>central</mirrorOf>
++      <url>https://repo.maven.apache.org/maven2</url>
++    </mirror>
++  </mirrors>
++</settings>
