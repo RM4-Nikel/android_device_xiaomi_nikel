@@ -25,15 +25,19 @@ count = 0
 for line in (device / "proprietary-blobs.txt").read_text().splitlines():
     if not line or line.startswith("#"):
         continue
-    original = args.stock / "system" / line
-    blob = vendor / line
+    entry = line.lstrip("-").split("|", 1)[0]
+    paths = entry.split(":")
+    source = paths[0]
+    destination = paths[1] if len(paths) > 1 and "/" in paths[1] else source
+    original = args.stock / "system" / source
+    blob = vendor / destination
     assert hashlib.sha256(original.read_bytes()).digest() == hashlib.sha256(blob.read_bytes()).digest(), line
     ident = blob.read_bytes()[:5]
     if ident[:4] != b"\x7fELF":
         continue
     abi = "lib64" if ident[4] == 2 else "lib"
-    if line.startswith(("lib/", "lib64/")):
-        assert line.split("/")[0] == abi, line
+    if destination.startswith(("lib/", "lib64/")):
+        assert destination.split("/")[0] == abi, line
     dynamic = subprocess.check_output(["readelf", "-d", blob], text=True)
     for name in re.findall(r"NEEDED.*?\[(.*?)\]", dynamic):
         if name.removesuffix(".so") in platform:

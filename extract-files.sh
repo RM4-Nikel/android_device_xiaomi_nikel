@@ -34,6 +34,4 @@ for entry in "${PRODUCT_COPY_FILES_LIST[@]}" "${PRODUCT_PACKAGES_LIST[@]}"; do
     test -f "$cm_root/$OUTDIR/proprietary/$(target_file "$entry")"
 done
 
-write_headers
-write_makefiles "$blob_list"
-write_footers
+"$device_dir/setup-makefiles.sh"
