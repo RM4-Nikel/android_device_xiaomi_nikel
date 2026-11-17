@@ -1,0 +1,6 @@
+#ifndef NIKEL_BDROID_BUILDCFG_H
+#define NIKEL_BDROID_BUILDCFG_H
+
+#define BTM_DEF_LOCAL_NAME "Xiaomi Redmi Note 4"
+
+#endif  // NIKEL_BDROID_BUILDCFG_H

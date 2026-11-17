@@ -35,6 +35,9 @@ TARGET_USERIMAGES_USE_EXT4 := true
 
 TARGET_SYSTEM_PROP := device/xiaomi/nikel/system.prop
 
+# Bluedroid defaults for Nikel.
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/xiaomi/nikel/bluetooth
+
 # MT6797 connectivity uses the WMT character device for power and mode.
 BOARD_WPA_SUPPLICANT_DRIVER := NL80211
 BOARD_HOSTAPD_DRIVER := NL80211
