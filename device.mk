@@ -29,3 +29,8 @@ NIKEL_FEATURE_XML := \
 
 PRODUCT_COPY_FILES += $(foreach file,$(NIKEL_FEATURE_XML),\
     frameworks/native/data/etc/$(file):system/etc/permissions/$(file))
+
+# MTK keypad and wired headset buttons.
+PRODUCT_COPY_FILES += \
+    device/xiaomi/nikel/keylayout/mtk-kpd.kl:system/usr/keylayout/mtk-kpd.kl \
+    device/xiaomi/nikel/keylayout/ACCDET.kl:system/usr/keylayout/ACCDET.kl
