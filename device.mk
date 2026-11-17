@@ -52,3 +52,10 @@ NIKEL_MEDIA_CONFIGS := \
 
 PRODUCT_COPY_FILES += $(foreach file,$(NIKEL_MEDIA_CONFIGS),\
     device/xiaomi/nikel/configs/$(file):system/etc/$(file))
+
+# Wi-Fi supplicant configs for the MediaTek connectivity driver.
+PRODUCT_PACKAGES += hostapd wpa_supplicant
+PRODUCT_COPY_FILES += \
+    device/xiaomi/nikel/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
+    device/xiaomi/nikel/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
+    device/xiaomi/nikel/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf
