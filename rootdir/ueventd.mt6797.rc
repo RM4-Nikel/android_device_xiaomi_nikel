@@ -1,0 +1,4 @@
+/dev/stpwmt  0660  system  system
+/dev/wmtdetect  0660  system  system
+/dev/wmtWifi  0660  system  system
+/dev/irtx  0660  system  system

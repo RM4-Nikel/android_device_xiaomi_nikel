@@ -67,3 +67,9 @@ PRODUCT_COPY_FILES += \
 # Stock MediaTek thermal policy.
 PRODUCT_COPY_FILES += \
     device/xiaomi/nikel/configs/thermal.conf:system/etc/.tp/thermal.conf
+
+# Android 6 init and ueventd load these files by ro.hardware.
+PRODUCT_COPY_FILES += \
+    device/xiaomi/nikel/rootdir/fstab.mt6797:root/fstab.mt6797 \
+    device/xiaomi/nikel/rootdir/init.mt6797.rc:root/init.mt6797.rc \
+    device/xiaomi/nikel/rootdir/ueventd.mt6797.rc:root/ueventd.mt6797.rc

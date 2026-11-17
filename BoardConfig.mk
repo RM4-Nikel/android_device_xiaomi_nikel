@@ -16,7 +16,7 @@ TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_USES_64_BIT_BINDER := true
 
 # Boot image geometry from the Nikel stock image and scatter file.
-BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2
+BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2 androidboot.hardware=mt6797
 BOARD_KERNEL_BASE := 0x40078000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 \
@@ -32,6 +32,7 @@ BOARD_CACHEIMAGE_PARTITION_SIZE := 452984832
 
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 TARGET_USERIMAGES_USE_EXT4 := true
+TARGET_RECOVERY_FSTAB := device/xiaomi/nikel/rootdir/recovery.fstab
 
 TARGET_SYSTEM_PROP := device/xiaomi/nikel/system.prop
 
