@@ -1,0 +1,13 @@
+diff --git a/build/core/maven_artifact.mk b/build/core/maven_artifact.mk
+index 3f8e7fda..b74a1927 100644
+--- a/build/core/maven_artifact.mk
++++ b/build/core/maven_artifact.mk
+@@ -39,7 +39,7 @@ $(LOCAL_PREBUILT_MODULE_FILE): version := $(LOCAL_MAVEN_VERSION)
+ $(LOCAL_PREBUILT_MODULE_FILE): packaging := $(LOCAL_MAVEN_PACKAGING)
+ $(LOCAL_PREBUILT_MODULE_FILE): classifier := $(LOCAL_MAVEN_CLASSIFIER)
+ $(LOCAL_PREBUILT_MODULE_FILE):
+-	$(hide) mvn -q org.apache.maven.plugins:maven-dependency-plugin:2.10:get \
++	$(hide) $(TOP)/prebuilts/eclipse/maven/apache-maven-3.2.1/bin/mvn -q org.apache.maven.plugins:maven-dependency-plugin:2.10:get \
+ 				   org.apache.maven.plugins:maven-dependency-plugin:2.10:copy \
+ 		-DremoteRepositories=central::::$(repo) \
+ 		-Dartifact=$(group):$(artifact):$(version):$(packaging)$(if $(classifier),:$(classifier)) \
