@@ -9,6 +9,7 @@ PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 TARGET_SCREEN_HEIGHT := 1920
 TARGET_SCREEN_WIDTH := 1080
+DEVICE_PACKAGE_OVERLAYS += device/xiaomi/nikel/overlay
 
 # Feature declarations shared by the Nikel stock ROM and CM13.
 NIKEL_FEATURE_XML := \
