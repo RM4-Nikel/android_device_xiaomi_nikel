@@ -1,0 +1,39 @@
+service wmtLoader /system/bin/wmt_loader
+    class core
+    user root
+    group root
+    oneshot
+
+service thermal_manager /system/bin/thermal_manager
+    class main
+    user root
+    oneshot
+
+service thermal /system/bin/thermal
+    class main
+    user system
+    group system
+
+service thermald /system/bin/thermald
+    class main
+    user system
+    group system
+
+service thermalloadalgod /system/bin/thermalloadalgod
+    class main
+    user system
+    group system
+
+service agpsd /system/bin/mtk_agpsd
+    class main
+    socket agpsd stream 660 gps system
+    socket agpsd2 stream 660 gps inet
+    socket agpsd3 stream 660 gps inet
+    user gps
+    group gps radio inet sdcard_r sdcard_rw misc
+
+service mnld /system/xbin/mnld
+    class main
+    user gps
+    group gps inet misc sdcard_rw sdcard_r media_rw system
+    socket mnld stream 660 gps system

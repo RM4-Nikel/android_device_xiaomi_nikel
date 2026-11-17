@@ -77,4 +77,5 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/xiaomi/nikel/rootdir/fstab.mt6797:root/fstab.mt6797 \
     device/xiaomi/nikel/rootdir/init.mt6797.rc:root/init.mt6797.rc \
+    device/xiaomi/nikel/rootdir/init.mt6797.services.rc:root/init.mt6797.services.rc \
     device/xiaomi/nikel/rootdir/ueventd.mt6797.rc:root/ueventd.mt6797.rc
