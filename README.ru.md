@@ -65,6 +65,9 @@ MIUI `V10.2.1.0.MBFMIXM`, Android 6.0.
 | `system-core-mtk-ril.patch` | `system/core` | Сетевые ioctl CCMNI для MediaTek RIL |
 | `frameworks-av-camera-flip.patch` | `frameworks/av` | Символы `CameraParameters`, используемые стоковой камерой |
 | `tinycompress-prebuilt-kernel.patch` | `external/tinycompress` | Использование UAPI-заголовков Bionic при готовом ядре Nikel |
+| `tinyalsa-prebuilt-kernel.patch` | `external/tinyalsa` | Экспортированные UAPI-заголовки при готовом ядре Nikel |
+| `vendor-cm-bundled-maven.patch` | `vendor/cm` | Использование Maven из исходников |
+| `vendor-cm-maven-https.patch` | `vendor/cm` | HTTPS для Maven Central; применять после патча bundled Maven |
 
 Например, из корня CM13 можно проверить и применить патч камеры.
 
@@ -125,6 +128,20 @@ FMRadio собирается отдельной целью после подго
 make -j4 FMRadio
 ```
 
+Полная сборка с тем же окружением Java 8, Python 2 и совместимым curl,
+описанным выше:
+
+```bash
+make -j6 bacon
+```
+
+Результат: `out/target/product/nikel/lineage-13.0-*-UNOFFICIAL-nikel.zip`.
+Первая полная сборка завершена успешно. Проверены CRC архива, OTA-подпись
+ключом testkey из исходников, проверка модели Nikel, контрольная сумма system,
+совпадение boot.img и всех 406 vendor-файлов в target-files.
+Это сборка userdebug с отладочными ключами. Загрузка и работа оборудования
+на телефоне пока не проверены.
+
 Для сравнения с другим ядром можно задать `TARGET_PREBUILT_KERNEL` при сборке.
 Ядро должно иметь формат gzip с добавленным DTB. Скрипт `verify-boot.py` сверяет
 образ с `prebuilt/kernel` из этого дерева.
@@ -135,7 +152,7 @@ make -j4 bootimage TARGET_PREBUILT_KERNEL=/path/to/Image.gz-dtb
 
 Размер раздела boot в стоковом scatter — 16 МиБ. Работу раздела `/data`,
 существующего шифрования, загрузчика и аппаратных вариантов предстоит проверить
-на устройстве. Полная сборка прошивки остаётся следующим этапом.
+на устройстве.
 
 Адаптер RIL и его исходный патч CCMNI взяты из дерева CoreXGT для CM13
 с сохранением авторских заголовков. FMRadio используется из исходников CM13.

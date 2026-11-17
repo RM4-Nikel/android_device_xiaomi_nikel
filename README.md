@@ -67,6 +67,9 @@ it to another revision.
 | `system-core-mtk-ril.patch` | `system/core` | CCMNI network ioctls for MediaTek RIL |
 | `frameworks-av-camera-flip.patch` | `frameworks/av` | `CameraParameters` symbols used by the stock camera |
 | `tinycompress-prebuilt-kernel.patch` | `external/tinycompress` | Bionic UAPI headers when using the Nikel prebuilt kernel |
+| `tinyalsa-prebuilt-kernel.patch` | `external/tinyalsa` | Exported UAPI headers with the Nikel prebuilt kernel |
+| `vendor-cm-bundled-maven.patch` | `vendor/cm` | Use Maven already included in the source checkout |
+| `vendor-cm-maven-https.patch` | `vendor/cm` | Use HTTPS for Maven Central; apply after the bundled Maven patch |
 
 For example, check and apply the camera patch from the CM13 root.
 
@@ -127,6 +130,20 @@ Build FMRadio separately after preparing the Java build environment.
 make -j4 FMRadio
 ```
 
+Build the full ROM with the same Java 8, Python 2 and curl compatibility
+environment described above:
+
+```bash
+make -j6 bacon
+```
+
+The resulting package is `out/target/product/nikel/lineage-13.0-*-UNOFFICIAL-nikel.zip`.
+The first full build completed successfully. ZIP CRC, the whole-file OTA signature
+with the source testkey, the Nikel device assertion, system payload checksum,
+boot image identity and all 406 vendor files in target-files were verified.
+This is a userdebug build signed with development test keys. Boot and hardware
+operation have not been tested on a phone.
+
 To compare another kernel, set `TARGET_PREBUILT_KERNEL` when building.
 The kernel must use gzip format with an appended DTB. The `verify-boot.py` script
 compares the image with this tree's `prebuilt/kernel`.
@@ -137,7 +154,7 @@ make -j4 bootimage TARGET_PREBUILT_KERNEL=/path/to/Image.gz-dtb
 
 The stock scatter file specifies a 16 MiB boot partition. The `/data` partition,
 existing encryption, bootloader behavior and hardware variants still require
-on-device testing. A full ROM build remains a subsequent development step.
+on-device testing.
 
 The RIL adapter and its original CCMNI patch come from CoreXGT's CM13 device tree,
 with the original author headers preserved. FMRadio comes from the CM13 sources.
