@@ -1,5 +1,9 @@
 $(call inherit-product-if-exists, vendor/xiaomi/nikel/nikel-vendor.mk)
 
+ifneq ($(wildcard vendor/xiaomi/nikel/nikel-vendor.mk),)
+PRODUCT_PACKAGES += libcurl libtinyxml
+endif
+
 # Display and boot animation.
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
