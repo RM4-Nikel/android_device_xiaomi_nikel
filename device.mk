@@ -59,3 +59,7 @@ PRODUCT_COPY_FILES += \
     device/xiaomi/nikel/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
     device/xiaomi/nikel/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
     device/xiaomi/nikel/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf
+
+# SUPL profiles consumed by the MediaTek A-GPS stack.
+PRODUCT_COPY_FILES += \
+    device/xiaomi/nikel/gps/agps_profiles_conf2.xml:system/etc/agps_profiles_conf2.xml
