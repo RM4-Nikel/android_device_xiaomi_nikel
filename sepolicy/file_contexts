@@ -5,3 +5,4 @@
 /dev/camera[^/]* u:object_r:camera_device:s0
 /dev/kd_camera[^/]* u:object_r:camera_device:s0
 /dev/(MAINAF|MAIN2AF|SUBAF|CAM_CAL_DRV) u:object_r:camera_device:s0
+/dev/fm u:object_r:fm_device:s0

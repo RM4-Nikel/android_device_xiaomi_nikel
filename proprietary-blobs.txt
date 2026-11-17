@@ -18,6 +18,16 @@ etc/firmware/WIFI_RAM_CODE_6797
 etc/firmware/WMT_SOC.cfg
 etc/firmware/dsp_1_ulwctg_n.bin
 etc/firmware/modem_1_ulwctg_n.img
+etc/firmware/mt6631/mt6631_fm_v1_coeff.bin
+etc/firmware/mt6631/mt6631_fm_v1_patch.bin
+etc/firmware/mt6631/mt6631_fm_v2_coeff.bin
+etc/firmware/mt6631/mt6631_fm_v3_coeff.bin
+etc/firmware/mt6631/mt6631_fm_v3_patch.bin
+etc/firmware/mt6631/mt6631_fm_v4_coeff.bin
+etc/firmware/mt6631/mt6631_fm_v4_patch.bin
+etc/firmware/mt6631/mt6631_fm_v5_coeff.bin
+etc/firmware/mt6631/mt6631_fm_v5_patch.bin
+etc/fmr/mt6631_fm_cust.cfg
 lib/egl/libGLES_mali.so
 lib/hw/audio.primary.mt6797.so
 lib/hw/camera.mt6797.so
@@ -134,6 +144,7 @@ lib/libfeature_eis.so
 lib/libfeature_vfb.so
 lib/libfeatureio.featurefactory.so
 lib/libfile_op.so
+lib/libfmcust.so
 lib/libft2.so
 lib/libgas.so
 lib/libged.so
@@ -296,6 +307,7 @@ lib64/libfeature_cfb.so
 lib64/libfeature_eis.so
 lib64/libfeature_vfb.so
 lib64/libfeatureio.featurefactory.so
+lib64/libfmcust.so
 lib64/libgas.so
 lib64/libged.so
 lib64/libgem.so
