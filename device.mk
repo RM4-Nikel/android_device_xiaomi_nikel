@@ -16,6 +16,8 @@ NIKEL_FEATURE_XML := \
     android.hardware.bluetooth.xml \
     android.hardware.bluetooth_le.xml \
     android.hardware.camera.xml \
+    android.hardware.camera.flash-autofocus.xml \
+    android.hardware.camera.front.xml \
     android.hardware.consumerir.xml \
     android.hardware.fingerprint.xml \
     android.hardware.location.gps.xml \

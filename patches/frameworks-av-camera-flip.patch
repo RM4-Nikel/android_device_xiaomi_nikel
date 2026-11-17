@@ -1,0 +1,33 @@
+diff --git a/camera/CameraParameters.cpp b/camera/CameraParameters.cpp
+index 42b088461..e67611544 100644
+--- a/camera/CameraParameters.cpp
++++ b/camera/CameraParameters.cpp
+@@ -25,6 +25,13 @@
+ #include <system/graphics.h>
+ 
+ namespace android {
++const char CameraParameters::SNAPSHOT_PICTURE_FLIP[] = "snapshot-picture-flip";
++
++void CameraParameters::setCameraPictureFlip(int flip)
++{
++    set(SNAPSHOT_PICTURE_FLIP, flip);
++}
++
+ // Parameter keys to communicate between camera application and driver.
+ const char CameraParameters::KEY_PREVIEW_SIZE[] = "preview-size";
+ const char CameraParameters::KEY_SUPPORTED_PREVIEW_SIZES[] = "preview-size-values";
+diff --git a/include/camera/CameraParameters.h b/include/camera/CameraParameters.h
+index d85050d60..24c10745c 100644
+--- a/include/camera/CameraParameters.h
++++ b/include/camera/CameraParameters.h
+@@ -57,6 +57,10 @@ public:
+ 
+     void remove(const char *key);
+ 
++    // Compatibility with Nikel's stock camera HAL.
++    static const char SNAPSHOT_PICTURE_FLIP[];
++    void setCameraPictureFlip(int flip);
++
+     void setPreviewSize(int width, int height);
+     void getPreviewSize(int *width, int *height) const;
+     void getSupportedPreviewSizes(Vector<Size> &sizes) const;

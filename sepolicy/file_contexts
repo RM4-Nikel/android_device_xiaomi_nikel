@@ -2,3 +2,6 @@
 /system/bin/(wmt_loader|thermal_manager|thermal|thermald|thermalloadalgod|mtk_agpsd|ccci_mdinit|ccci_fsd|nvram_daemon) u:object_r:mtk_daemon_exec:s0
 /system/xbin/mnld u:object_r:mtk_daemon_exec:s0
 /system/bin/mtkrild u:object_r:rild_exec:s0
+/dev/camera[^/]* u:object_r:camera_device:s0
+/dev/kd_camera[^/]* u:object_r:camera_device:s0
+/dev/(MAINAF|MAIN2AF|SUBAF|CAM_CAL_DRV) u:object_r:camera_device:s0
