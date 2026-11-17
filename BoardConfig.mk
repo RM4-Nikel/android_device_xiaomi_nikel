@@ -33,6 +33,7 @@ BOARD_CACHEIMAGE_PARTITION_SIZE := 452984832
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_RECOVERY_FSTAB := device/xiaomi/nikel/rootdir/recovery.fstab
+BOARD_SEPOLICY_DIRS += device/xiaomi/nikel/sepolicy
 
 TARGET_SYSTEM_PROP := device/xiaomi/nikel/system.prop
 

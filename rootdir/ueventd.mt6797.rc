@@ -2,3 +2,5 @@
 /dev/wmtdetect  0660  system  system
 /dev/wmtWifi  0660  system  system
 /dev/irtx  0660  system  system
+/dev/mali  0666  system  graphics
+/dev/ion  0666  system  graphics
