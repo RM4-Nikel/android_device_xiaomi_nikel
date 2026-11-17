@@ -34,3 +34,8 @@ PRODUCT_COPY_FILES += $(foreach file,$(NIKEL_FEATURE_XML),\
 PRODUCT_COPY_FILES += \
     device/xiaomi/nikel/keylayout/mtk-kpd.kl:system/usr/keylayout/mtk-kpd.kl \
     device/xiaomi/nikel/keylayout/ACCDET.kl:system/usr/keylayout/ACCDET.kl
+
+# MediaTek audio policy and device routing.
+PRODUCT_COPY_FILES += \
+    device/xiaomi/nikel/audio/audio_policy.conf:system/etc/audio_policy.conf \
+    device/xiaomi/nikel/audio/audio_device.xml:system/etc/audio_device.xml
