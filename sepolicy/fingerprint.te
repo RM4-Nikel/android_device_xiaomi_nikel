@@ -1,0 +1,9 @@
+type fingerprint_device, dev_type;
+allow fingerprintd fingerprint_device:chr_file rw_file_perms;
+allow fingerprintd tee_device:chr_file rw_file_perms;
+allow keystore tee_device:chr_file rw_file_perms;
+
+# Replace this bring-up exemption with device-tested access rules.
+userdebug_or_eng(
+    permissive fingerprintd;
+)

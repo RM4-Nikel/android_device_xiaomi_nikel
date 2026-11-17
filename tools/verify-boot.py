@@ -49,9 +49,11 @@ while cursor < len(archive):
         break
 required = ("init", "init.rc", "init.mt6797.rc", "init.mt6797.services.rc",
             "init.mt6797.modem.rc", "fstab.mt6797", "ueventd.mt6797.rc",
+            "init.mt6797.fingerprint.rc",
             "sepolicy", "file_contexts", "init.zygote64_32.rc")
 assert all(files.get(name) for name in required), "Missing initramfs files"
 for name in ("init.mt6797.rc", "init.mt6797.services.rc", "init.mt6797.modem.rc",
+             "init.mt6797.fingerprint.rc",
              "fstab.mt6797", "ueventd.mt6797.rc"):
     assert files[name] == (device / "rootdir" / name).read_bytes(), name
 assert b"androidboot.hardware=mt6797" in data[64:576]

@@ -2,6 +2,14 @@ $(call inherit-product-if-exists, vendor/xiaomi/nikel/nikel-vendor.mk)
 
 ifneq ($(wildcard vendor/xiaomi/nikel/nikel-vendor.mk),)
 PRODUCT_PACKAGES += libcurl libtinyxml
+PRODUCT_PACKAGES += \
+    libgatekeeper \
+    libjnigraphics \
+    libkeymaster1 \
+    libkeymaster_messages \
+    libkeystore_binder \
+    libsoftkeymaster \
+    libsoftkeymasterdevice
 endif
 
 # Display and boot animation.
@@ -82,4 +90,5 @@ PRODUCT_COPY_FILES += \
     device/xiaomi/nikel/rootdir/init.mt6797.rc:root/init.mt6797.rc \
     device/xiaomi/nikel/rootdir/init.mt6797.services.rc:root/init.mt6797.services.rc \
     device/xiaomi/nikel/rootdir/init.mt6797.modem.rc:root/init.mt6797.modem.rc \
+    device/xiaomi/nikel/rootdir/init.mt6797.fingerprint.rc:root/init.mt6797.fingerprint.rc \
     device/xiaomi/nikel/rootdir/ueventd.mt6797.rc:root/ueventd.mt6797.rc

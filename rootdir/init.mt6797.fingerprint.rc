@@ -1,0 +1,26 @@
+on post-fs-data
+    mkdir /data/app/mcRegistry 0775 system system
+    mkdir /data/app/mcRegistry/TbStorage 0775 system system
+    mkdir /data/fpc 0770 system system
+    mkdir /data/fpsensor 0770 system system
+    chown system system /sys/bus/platform/devices/soc/soc:fpc_interrupt@0/irq
+    chown system system /sys/bus/platform/devices/soc/soc:fpc_interrupt@0/clk_enable
+    chown system system /sys/bus/platform/devices/soc/soc:fpc_interrupt@0/do_wakeup
+    chown system system /sys/bus/platform/devices/soc/soc:fpc_interrupt@0/wakeup_enable
+
+service goodixfpd /system/bin/goodixfingerprintd
+    class main
+    user system
+    group system sdcard_rw
+
+# The stock daemon selects FPC/Goodix using ro.boot.fpsensor.
+service fingerprintd /system/bin/fingerprintd
+    class late_start
+    user system
+    group system sdcard_rw
+
+service mobicore /system/bin/mcDriverDaemon -r /system/app/mcRegistry/020f0000000000000000000000000000.drbin -r /system/app/mcRegistry/05120000000000000000000000000000.drbin -r /system/app/mcRegistry/070b0000000000000000000000000000.drbin -r /system/app/mcRegistry/020b0000000000000000000000000000.drbin -r /system/app/mcRegistry/05070000000000000000000000000000.drbin -r /system/app/mcRegistry/04020000000000000000000000000000.drbin -r /system/app/mcRegistry/05230000000000000000000000000000.drbin
+    user system
+    group system
+    class core
+    oneshot

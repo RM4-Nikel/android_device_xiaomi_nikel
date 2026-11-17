@@ -1,5 +1,6 @@
 import /init.mt6797.services.rc
 import /init.mt6797.modem.rc
+import /init.mt6797.fingerprint.rc
 
 on init
     mkdir /nvdata 0771 root system

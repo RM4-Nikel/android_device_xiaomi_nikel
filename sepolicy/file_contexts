@@ -6,3 +6,6 @@
 /dev/kd_camera[^/]* u:object_r:camera_device:s0
 /dev/(MAINAF|MAIN2AF|SUBAF|CAM_CAL_DRV) u:object_r:camera_device:s0
 /dev/fm u:object_r:fm_device:s0
+/system/bin/(mcDriverDaemon|goodixfingerprintd) u:object_r:mtk_daemon_exec:s0
+/dev/mobicore(-user)? u:object_r:tee_device:s0
+/dev/(goodix_fp|fpsensor) u:object_r:fingerprint_device:s0

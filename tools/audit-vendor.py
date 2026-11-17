@@ -19,7 +19,8 @@ libstdc++ libmedia libstagefright libstagefright_foundation libcrypto libssl
 libicuuc libnativehelper libnetutils libnetd_client libhardware_legacy
 libtinyalsa libtinyxml libcurl libaudioutils libexpat libxml2 libbacktrace
 libunwind libpower libcamera_client libcamera_metadata libdrmframework
-libskia libselinux libpng
+libskia libselinux libpng libjnigraphics libkeystore_binder
+libsoftkeymasterdevice libsoftkeymaster libkeymaster_messages libkeymaster1 libgatekeeper
 """.split())
 count = 0
 for line in (device / "proprietary-blobs.txt").read_text().splitlines():
